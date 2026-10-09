@@ -85,15 +85,15 @@ namespace AppInsegura
             string[] archivoLeido = File.ReadAllLines(rutaReadMe);
             archivoLeido.Split("|");
 
-            string nombreUsuarioPrueba = "hola";
-            string contrasenaUsuarioPrueba = "que";
-            string rolUsuarioPrueba = "tal";
+            string nombreUsuarioPrueba = "UnkownUser";
+            string contrasenaUsuarioPrueba = "UnknownPassword";
+            string rolUsuarioPrueba = "UnknownRole";
 
             foreach (string linea in archivoLeido)
             {
                 if (linea.Length < 1) { continue; }
 
-                if (linea[0] == '|') { continue; }
+                if (linea[0] != '|') { continue; }
 
                 if (linea.Contains("Usuario") || linea.Contains("---")) { continue; }
 
