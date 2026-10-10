@@ -107,25 +107,22 @@ namespace AppInsegura
                         switch (i)
                         {
                             case 1:
-                                nombreUsuarioPrueba = palabra;
+                                nombreUsuarioPrueba = palabra.Trim();
                                 break;
                             case 2:
 
-                                contrasenaUsuarioPrueba = palabra;
+                                contrasenaUsuarioPrueba = palabra.Trim();
                                 break;
                             case 3:
-                                rolUsuarioPrueba = palabra;
+                                rolUsuarioPrueba = palabra.Trim();
                                 break;
                         }
                     }
                 }
 
-                Console.WriteLine(nombreUsuarioPrueba + contrasenaUsuarioPrueba + rolUsuarioPrueba);
-
-
+                auth.Registrar(nombreUsuarioPrueba, contrasenaUsuarioPrueba, rolUsuarioPrueba);
 
             }
-
         }
 
 
