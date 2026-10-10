@@ -6,7 +6,7 @@ namespace AppInsegura.Servicios
 {
     public class RedService
     {
-        private string ApiKey = Environment.GetEnvironmentVariable("ApiKey", EnvironmentVariableTarget.User);
+        private string ApiKey = Environment.GetEnvironmentVariable("ApiKey", EnvironmentVariableTarget.User); // Usamos la variable de entorno del usuario
         private const string UrlServidor = "https://api.miapp-insegura.local/puntuaciones"; // Usar conexion segura https
 
         public void EnviarPuntuacion(string nombreUsuario, int puntuacion)
@@ -27,7 +27,7 @@ namespace AppInsegura.Servicios
             using var cliente = new HttpClient();
             string url = $"{UrlServidor}?usuario={nombreUsuario}&puntos={puntuacion}&api_key={ApiKey}";
 
-            Console.WriteLine($"Enviando puntuación a: {url}");
+            // No mostramos a que url estamos enviando para evitar exponer informacion sensible.
             HttpResponseMessage respuesta = await cliente.GetAsync(url);
             Console.WriteLine($"Respuesta del servidor: {(int)respuesta.StatusCode}");
         }

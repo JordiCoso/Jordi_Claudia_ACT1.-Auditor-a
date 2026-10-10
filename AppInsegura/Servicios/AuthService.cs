@@ -66,16 +66,17 @@ namespace AppInsegura.Servicios
             using (var rng = RandomNumberGenerator.Create())
             {
                 rng.GetBytes(sal);
-                return rng.ToString(); // Convertimos a string
+                return rng.ToString();
             }
         }
 
         private void GuardarSesionEnDisco(Usuario usuario)
         {
-            using (var aes = Aes.Create())
+            // Encriptamos la sesion porque se guarda en el ordenador del cliente
+            using (var aes = Aes.Create()) 
             {
                 aes.GenerateIV();
-
+                
                 var nombreEnBytes = Encoding.ASCII.GetBytes(usuario.Nombre);
                 var tokenEnBytes = Encoding.ASCII.GetBytes(usuario.TokenSesion);
 
